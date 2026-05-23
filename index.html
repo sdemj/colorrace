@@ -13,27 +13,20 @@
     height: 100%;
     margin: 0;
     padding: 0;
-overflow: hidden; /* 스크롤 방지 */
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 .game-container {
-width: 1280px;  /* 기준 크기 (PC 해상도) */
-    height: 720px;  /* 16:9 비율 유지 */
+    width: 95vw;    /* 모바일에서는 화면 너비의 95% */
+    max-width: 1280px;
+    height: 85vh;   /* 화면 높이의 85% */
+    border: 4px solid #ff6b00;
+    border-radius: 16px;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background-image: url('car.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #090d16;
-    
-    /* 핵심: 화면 중앙 정렬 및 스케일링 준비 */
-    transform-origin: center center;
+    background-size: cover; /* 이미지가 잘리지 않게 조정 */
+    margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -400,14 +393,14 @@ function showPage(pageId) {
     if(target) target.classList.add('active');
     
     const container = document.querySelector('.game-container');
-    
-    // 이미지 경로가 확실한지 다시 한 번 확인하세요
     if (pageId === 'pg-welcome') {
         container.style.backgroundImage = "url('car.png')"; 
     } else if (pageId === 'pg-setup') {
         container.style.backgroundImage = "url('bg.png')";  
     } else if (pageId === 'pg-game') {
-        container.style.backgroundImage = "url('bg1.png')"; 
+        container.style.backgroundImage = "url('bg1.png')";  
+    } else {
+        container.style.backgroundImage = "none";            
     }
     
     const htpBtn = document.getElementById('htpBtn');
@@ -421,28 +414,6 @@ function playWelcomeSound(){
 function playClick(){
   try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const c=new A(),o=c.createOscillator(),g=c.createGain(),f=c.createBiquadFilter();o.type='sawtooth';o.frequency.setValueAtTime(50,c.currentTime);o.frequency.exponentialRampToValueAtTime(260,c.currentTime+.12);o.frequency.exponentialRampToValueAtTime(80,c.currentTime+.28);f.type='lowpass';f.frequency.setValueAtTime(300,c.currentTime);f.frequency.exponentialRampToValueAtTime(1000,c.currentTime+.08);f.frequency.exponentialRampToValueAtTime(180,c.currentTime+.28);g.gain.setValueAtTime(.28,c.currentTime);g.gain.exponentialRampToValueAtTime(.01,c.currentTime+.28);o.connect(f);f.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.3);}catch(e){}
 }
-
-function resizeGame() {
-    const container = document.querySelector('.game-container');
-    const winW = window.innerWidth;
-    const winH = window.innerHeight;
-    
-    // 원본 디자인 기준 크기 (1280x720)
-    const targetW = 1280;
-    const targetH = 720;
-    
-    // 비율 계산
-    const scaleX = winW / targetW;
-    const scaleY = winH / targetH;
-    const scale = Math.min(scaleX, scaleY); // 가로/세로 중 더 작은 쪽에 맞춰서 축소
-    
-    container.style.transform = `scale(${scale})`;
-}
-
-// 창 크기 변경 시 실행
-window.addEventListener('resize', resizeGame);
-// 초기 로드 시 실행
-window.onload = resizeGame;
 
 function goSetup(){
   playWelcomeSound();
