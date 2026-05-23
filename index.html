@@ -204,6 +204,541 @@ html,body{width:100%;min-height:100vh;background:#0f172a;background-image:linear
 
     <!-- 버튼 영역 -->
     <div class="retro-btn-area">
+      <div class="retro-lights traffic-anim">
+      <div class="retro-light" style="background:#dc2626"></div>
+      <div class="retro-light" style="background:#eab308"></div>
+      <div class="retro-light" style="background:#10b981"></div>
+    </div>
+      <button class="retro-start-btn" onclick="goIntro()" style="margin-top:16px;"> How to play </button>
+<button class="retro-start-btn" onclick="goSetup()" style="margin-top:16px;">모둠 설정하기</button>
+    </div>
+      <div class="retro-lights traffic-anim">
+      <div class="retro-light" style="background:#dc2626, margin-bottom:16px"></div>
+      <div class="retro-light" style="background:#eab308, margin-bottom:16px"></div>
+      <div class="retro-light" style="background:#10b981, margin-bottom:16px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: INTRO -->
+<div id="pg-intro" class="page">
+  <div class="carbon" style="width:100%;max-width:860px;padding:40px;gap:20px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+    <div class="checker" style="position:absolute;top:0;left:0;right:0"></div>
+    <h1 style="color:#fff;font-size:clamp(1.8rem,5vw,3rem);font-weight:900;text-align:center;margin-top:12px"> Color Race 활동 안내</h1>
+    
+    <div style="background:rgba(15,23,42,.9);border:1px solid #334155;border-radius:18px;padding:24px">
+      <h2 style="color:var(--neon);font-size:1.3rem;font-weight:800;margin-bottom:14px"> 활동 방법</h2>
+      
+      <!-- 순서가 있는 리스트로 변경 -->
+      <ul class="htp-list" style="color:#cbd5e1;font-weight:600;font-size:1rem;line-height:1.6">
+        <li><span class="htp-num">1</span><span>모둠마다 원하는 <span style="color:#fb923c;font-weight:900">색깔</span>을 고릅니다.</span></li>
+        <li><span class="htp-num">2</span><span>화면에 본인 모둠이 선택한 색이 나올 때에만 단어를 소리 내어 읽습니다.</span></li>
+        <li><span class="htp-num">3</span><span>다른 모둠의 색이 나오면 조용히 순서를 기다립니다.</span></li>
+        <li style="border-top:1px solid #1e293b;padding-top:12px;margin-top:8px;color:#f87171;font-size:.95rem">
+          <span class="htp-num" style="background:var(--err)">!</span><span>주의: 제한 시간 1초 내에 빠르게 읽어야 성공!</span>
+        </li>
+      </ul>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:rgba(6,78,59,.3);border:1px solid rgba(5,150,105,.4);border-radius:16px;padding:20px">
+        <h3 style="color:#34d399;font-size:1.1rem;font-weight:800;margin-bottom:10px"> 정답 판정</h3>
+        <p style="color:#e2e8f0;font-weight:600;font-size:.95rem;line-height:1.6">제한 시간 내에 완벽하게 단어를 읽었을 경우</p>
+      </div>
+      <div style="background:rgba(136,19,55,.25);border:1px solid rgba(225,29,72,.35);border-radius:16px;padding:20px">
+        <h3 style="color:#fb7185;font-size:1.1rem;font-weight:800;margin-bottom:10px"> 오답 판정</h3>
+        <ul class="htp-list" style="color:#e2e8f0;font-weight:600;font-size:.85rem;line-height:1.7">
+          <li><span class="htp-num htp-num-red">1</span><span>다른 팀 색상인데 먼저 읽었을 때</span></li>
+          <li><span class="htp-num htp-num-red">2</span><span>너무 느리게 읽었을 때 (시간 초과)</span></li>
+          <li><span class="htp-num htp-num-red">3</span><span>단어 순서를 헷갈려 잘못 읽었을 때</span></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="text-align:center;margin-top:8px">
+      <button onclick="goSetup()" style="padding:16px 48px;background:linear-gradient(to right,#dc2626,var(--neon));border:2px solid rgba(255,255,255,.2);color:#fff;font-weight:900;font-size:1.4rem;border-radius:16px;cursor:pointer;transition:all .2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">🚀 모둠 설정하러 가기</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: SETUP -->
+<div id="pg-setup" class="page">
+  <div class="carbon" style="width:100%;max-width:860px;padding:40px;gap:20px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+    <div class="checker" style="position:absolute;top:0;left:0;right:0"></div>
+    <h1 style="color:#fff;font-size:1.8rem;font-weight:900;text-align:center;margin-top:12px;letter-spacing:2px"> 모둠별 색상 설정</h1>
+    <p style="color:#64748b;font-weight:600;text-align:center;margin-top:-10px">해당 색깔 카드를 사용할 모둠 명칭을 설정해 주세요.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;background:rgba(2,6,23,.6);border:1px solid #334155;padding:12px 24px;border-radius:16px;max-width:360px;align-self:center">
+      <span style="color:#cbd5e1;font-weight:800">참가 모둠 수:</span>
+      <button class="btn-cnt" onclick="chgCount(-1)">-</button>
+      <span id="countDisp" style="color:#fff;font-weight:900;font-size:1.5rem;width:40px;text-align:center">6</span>
+      <button class="btn-cnt" onclick="chgCount(1)">+</button>
+    </div>
+    <div id="groupGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px"></div>
+    <div style="text-align:center;margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:8px">
+      <button onclick="startGame()" style="padding:16px 48px;background:linear-gradient(to right,#10b981,var(--neon));border:2px solid rgba(255,255,255,.2);color:#fff;font-weight:900;font-size:1.4rem;border-radius:16px;cursor:pointer;transition:all .2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''"> 게임 시작하기</button>
+      <span style="color:#475569;font-size:.8rem;font-weight:700;letter-spacing:2px">OR PRESS SPACEBAR ON DESKTOP</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: GAME -->
+<div id="pg-game" class="page">
+  <div style="width:100%;max-width:1000px;display:flex;flex-direction:column;gap:14px">
+    <div id="dashboard" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:rgba(2,6,23,.8);border:2px solid #1e293b;border-radius:16px;padding:14px"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div id="roundDisp" class="round-disp">ROUND 1</div>
+      <div id="recDisp" class="rec-disp">이전 기록: 없음</div>
+    </div>
+    <div style="position:relative">
+      <div id="colorGrid" class="grid-table"></div>
+      <button id="nextBtn" class="action-btn" onclick="handleNext()">➤</button>
+    </div>
+    <p class="blink" style="text-align:center;color:#94a3b8;font-size:.95rem;font-weight:700;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.05);padding:6px 20px;border-radius:9999px;display:inline-block;align-self:center">스페이스바를 눌러 셀을 하나씩 공개하세요</p>
+  </div>
+</div>
+
+<!-- MODAL: RESULT -->
+<div id="resModal" class="modal-wrap">
+  <div id="resBox" class="modal-box">
+    <div style="color:#94a3b8;font-weight:700;font-size:1.1rem;letter-spacing:2px;text-transform:uppercase">이번 라운드 기록</div>
+    <div id="resTime" class="modal-time">00.00초</div>
+    <div id="resMsg" style="font-size:1.1rem;font-weight:700;color:#cbd5e1"></div>
+    <div id="resBtns" style="display:flex;gap:12px;justify-content:center;margin-top:8px"></div>
+  </div>
+</div>
+
+<!-- MODAL: REPORT -->
+<div id="repModal" class="modal-wrap">
+  <div class="modal-box" style="border-color:#94a3b8;max-height:85vh;overflow-y:auto;gap:16px">
+    <div style="color:#cbd5e1;font-weight:900;font-size:1.8rem;letter-spacing:2px">Class Record</div>
+    <table class="htable">
+      <thead><tr><th>라운드</th><th>소요 시간</th></tr></thead>
+      <tbody id="repBody"></tbody>
+    </table>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+      <button class="mbtn mbtn-next" onclick="resetGame()">게임판 초기화 (동일 모둠)</button>
+      <button class="mbtn mbtn-exit" onclick="goSetup()">처음 단계로 (모둠 재지정)</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: HOW TO PLAY (수정됨) -->
+<div id="htpModal" class="modal-wrap">
+  <div class="modal-box" style="gap:16px;position:relative;max-height:85vh;overflow-y:auto">
+    <button onclick="closeHTP()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#64748b;font-size:1.4rem;cursor:pointer;font-weight:900">✕</button>
+    <h2 style="color:#fff;font-size:1.5rem;font-weight:900"> HOW TO PLAY (활동 방법)</h2>
+
+    <div style="background:rgba(2,6,23,.8);border:2px solid rgba(255,107,0,.3);border-radius:16px;padding:20px;text-align:left;color:#cbd5e1;font-weight:600;font-size:.95rem;width:100%">
+
+      <!-- 활동 방법 -->
+      <p style="color:var(--neon);font-weight:900;font-size:1.1rem;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #1e293b"> 활동 방법</p>
+      <ul class="htp-list" style="margin-bottom:18px">
+        <li><span class="htp-num">1</span><span>모둠마다 원하는 <span style="color:#fb923c;font-weight:900">색깔</span>을 고릅니다.</span></li>
+        <li><span class="htp-num">2</span><span>화면에 본인 모둠이 선택한 색이 나올 때에만 단어를 소리 내어 읽습니다.</span></li>
+        <li><span class="htp-num">3</span><span>다른 모둠의 색이 나오면 조용히 순서를 기다립니다.</span></li>
+      </ul>
+
+      <!-- 판정 기준 -->
+      <p style="color:var(--neon);font-weight:900;font-size:1.1rem;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #1e293b"> 판정 기준</p>
+
+      <!-- 정답 -->
+      <div style="margin-bottom:14px">
+        <p style="color:#34d399;font-weight:800;font-size:1rem;margin-bottom:8px"> 정답 판정</p>
+        <ul class="htp-list">
+          <li><span class="htp-num" style="background:#34d399;color:#000">1</span><span>제한 시간 내에 완벽하게 단어를 읽었을 경우</span></li>
+        </ul>
+      </div>
+
+      <!-- 오답 -->
+      <div>
+        <p style="color:#fb7185;font-weight:800;font-size:1rem;margin-bottom:8px"> 오답 판정</p>
+        <ul class="htp-list">
+          <li><span class="htp-num htp-num-red">1</span><span>다른 팀의 색상인데 먼저 소리 내어 읽었을 때</span></li>
+          <li><span class="htp-num htp-num-red">2</span><span>너무 느리게 읽었을 때 (시간 초과)</span></li>
+          <li><span class="htp-num htp-num-red">3</span><span>제시된 단어 순서를 헷갈려 잘못 읽었을 때</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <button onclick="closeHTP()" style="width:100%;padding:14px;background:linear-gradient(to right,#dc2626,var(--neon));border:none;border-radius:12px;color:#fff;font-weight:900;font-size:1.1rem;cursor:pointer">게임으로 돌아가기</button>
+  </div>
+</div>
+
+<!-- HOW TO PLAY 버튼 -->
+<button id="htpBtn" onclick="openHTP()" style="position:fixed;top:14px;right:14px;background:#1e293b;border:3px solid var(--neon);color:#fff;padding:8px 18px;border-radius:12px;font-weight:800;font-size:.85rem;cursor:pointer;z-index:100;display:none;letter-spacing:1px;box-shadow:0 0 16px rgba(255,107,0,.3)"> HOW TO PLAY ? </button>
+
+<script>
+const masterColors=[
+  {id:'red',name:'빨강',hex:'#ff4d4d',text:'#ffffff',def:'1모둠'},
+  {id:'blue',name:'파랑',hex:'#2e86de',text:'#ffffff',def:'2모둠'},
+  {id:'yellow',name:'노랑',hex:'#f1c40f',text:'#3f3f46',def:'3모둠'},
+  {id:'green',name:'초록',hex:'#2ecc71',text:'#ffffff',def:'4모둠'},
+  {id:'pink',name:'분홍',hex:'#fd79a8',text:'#ffffff',def:'5모둠'},
+  {id:'black',name:'검정',hex:'#2d3436',text:'#ffffff',def:'6모둠'},
+  {id:'orange',name:'주황',hex:'#ff7f50',text:'#ffffff',def:'7모둠'},
+  {id:'purple',name:'보라',hex:'#a55eea',text:'#ffffff',def:'8모둠'}
+];
+const words=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const cellCount=16;
+let page='welcome',groupCount=6,groupNames={},roundNum=1,revIdx=-1,lastRec=null,history=[],startTime=null,timerOn=false,success=false,pausedMs=0,pauseAt=null,scoreVal=0;
+masterColors.forEach(c=>groupNames[c.id]=c.def);
+
+const pages={welcome:'pg-welcome',intro:'pg-intro',setup:'pg-setup',game:'pg-game'};
+const grid=document.getElementById('colorGrid');
+const roundDisp=document.getElementById('roundDisp');
+const recDisp=document.getElementById('recDisp');
+const nextBtn=document.getElementById('nextBtn');
+const resModal=document.getElementById('resModal');
+const resBox=document.getElementById('resBox');
+const resTime=document.getElementById('resTime');
+const resMsg=document.getElementById('resMsg');
+const resBtns=document.getElementById('resBtns');
+const repModal=document.getElementById('repModal');
+const repBody=document.getElementById('repBody');
+const dashboard=document.getElementById('dashboard');
+const htpModal=document.getElementById('htpModal');
+const htpBtn=document.getElementById('htpBtn');
+const groupGrid=document.getElementById('groupGrid');
+const countDisp=document.getElementById('countDisp');
+
+/* 레트로 별 생성 */
+const sky=document.getElementById('retroSky');
+if(sky){for(let i=0;i<60;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*2.5+.5;s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;opacity:${Math.random()*.8+.2}`;sky.appendChild(s);}}
+
+/* 레트로 스코어 카운터 */
+setInterval(()=>{scoreVal+=Math.floor(Math.random()*150+50);document.getElementById('scoreDisp').textContent=String(scoreVal).padStart(6,'0');},200);
+
+function showPage(p){
+  Object.values(pages).forEach(id=>document.getElementById(id).classList.remove('active'));
+  document.getElementById(pages[p]).classList.add('active');
+  page=p;
+  htpBtn.style.display=(p==='setup'||p==='game')?'block':'none';
+}
+
+function playWelcomeSound(){
+  try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const c=new A(),now=c.currentTime,notes=[110,147,196,294,220,440],durs=[.08,.08,.08,.12,.1,.4];let t=0;notes.forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();o.type=i===notes.length-1?'sawtooth':'triangle';o.frequency.setValueAtTime(f,now+t);if(i===notes.length-1)o.frequency.exponentialRampToValueAtTime(880,now+t+durs[i]);g.gain.setValueAtTime(.18,now+t);g.gain.exponentialRampToValueAtTime(.01,now+t+durs[i]);o.connect(g);g.connect(c.destination);o.start(now+t);o.stop(now+t+durs[i]);t+=durs[i]-.02});}catch(e){}
+}
+function playClick(){
+  try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const c=new A(),o=c.createOscillator(),g=c.createGain(),f=c.createBiquadFilter();o.type='sawtooth';o.frequency.setValueAtTime(50,c.currentTime);o.frequency.exponentialRampToValueAtTime(260,c.currentTime+.12);o.frequency.exponentialRampToValueAtTime(80,c.currentTime+.28);f.type='lowpass';f.frequency.setValueAtTime(300,c.currentTime);f.frequency.exponentialRampToValueAtTime(1000,c.currentTime+.08);f.frequency.exponentialRampToValueAtTime(180,c.currentTime+.28);g.gain.setValueAtTime(.28,c.currentTime);g.gain.exponentialRampToValueAtTime(.01,c.currentTime+.28);o.connect(f);f.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.3);}catch(e){}
+}
+
+function goIntro(){playWelcomeSound();showPage('intro');}
+function goSetup(){
+  repModal.classList.remove('active');
+  resModal.classList.remove('active');
+  showPage('setup');
+  renderGroups();
+}
+
+function chgCount(d){
+  const n=groupCount+d;
+  if(n>=2&&n<=8){saveNames();groupCount=n;countDisp.textContent=n;renderGroups();}
+}
+function saveNames(){
+  masterColors.slice(0,groupCount).forEach(c=>{
+    const el=document.getElementById('inp-'+c.id);
+    if(el)groupNames[c.id]=el.value.trim()||c.def;
+  });
+}
+function renderGroups(){
+  groupGrid.innerHTML='';
+  masterColors.slice(0,groupCount).forEach(c=>{
+    const val=groupNames[c.id]||c.def;
+    const card=document.createElement('div');
+    card.className='group-card';
+    card.style.background=`linear-gradient(135deg,${c.hex}ee,${c.hex}99)`;
+    card.innerHTML=`<label style="font-weight:900;font-size:1.1rem;margin-bottom:10px;color:${c.text};text-shadow:0 1px 3px rgba(0,0,0,.4)">${c.name}</label><input type="text" id="inp-${c.id}" class="group-input" value="${val}">`;
+    const inp=card.querySelector('input');
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur();});
+    groupGrid.appendChild(card);
+  });
+}
+
+function startGame(){
+  saveNames();
+  showPage('game');
+  updateDashboard();
+  initGrid(true);
+}
+function updateDashboard(){
+  dashboard.innerHTML='';
+  masterColors.slice(0,groupCount).forEach(c=>{
+    const nm=groupNames[c.id]||c.def;
+    const b=document.createElement('div');
+    b.className='badge';
+    b.style.backgroundColor=c.hex;
+    b.style.color=c.text;
+    b.innerHTML=`<span style="font-size:.7rem">●</span><span>${c.name}: ${nm}</span>`;
+    dashboard.appendChild(b);
+  });
+}
+
+function getColors(){
+  let res=[],active=masterColors.slice(0,groupCount).map(c=>c.hex);
+  const base=Math.floor(cellCount/active.length);
+  active.forEach((col,i)=>{const n=i===active.length-1?cellCount-res.length:base;for(let j=0;j<n;j++)res.push(col);});
+  for(let i=res.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[res[i],res[j]]=[res[j],res[i]];}
+  return res;
+}
+function getWords(){
+  let sel=[],tmp=[...words];
+  for(let i=0;i<cellCount;i++){if(!tmp.length)tmp=[...words];sel.push(tmp.splice(Math.floor(Math.random()*tmp.length),1)[0]);}
+  return sel;
+}
+function initGrid(reset=false){
+  grid.innerHTML='';revIdx=-1;nextBtn.classList.remove('visible');
+  resModal.classList.remove('active');repModal.classList.remove('active');resBox.classList.remove('fail');
+  pausedMs=0;pauseAt=null;
+  if(reset){roundNum=1;lastRec=null;history=[];roundDisp.textContent='ROUND 1';recDisp.textContent='이전 기록: 없음';}
+  startTime=Date.now();timerOn=true;
+  const cols=getColors(),wrds=getWords();
+  for(let i=0;i<cellCount;i++){
+    const cell=document.createElement('div');cell.className='cell';
+    cell.style.backgroundColor=cols[i];cell.textContent=wrds[i];
+    const ov=document.createElement('div');ov.className='overlay';ov.id='ov-'+i;
+    cell.appendChild(ov);grid.appendChild(cell);
+  }
+}
+function fmt(s){
+  if(s===null)return'없음';
+  if(s>=60){const m=Math.floor(s/60),r=(s%60).toFixed(2);return`${m}분 ${r}초`;}
+  return`${s.toFixed(2)}초`;
+}
+function showResult(dur){
+  resTime.textContent=fmt(dur);resBtns.innerHTML='';
+  if(lastRec===null||dur<lastRec){
+    success=true;history.push({round:roundNum,time:dur});lastRec=dur;
+    resMsg.textContent=roundNum===1?'첫 라운드 완료!':'기록 단축 성공! 다음 단계로 도전하세요.';
+    resMsg.style.color='#cbd5e1';resBox.classList.remove('fail');
+    resBtns.innerHTML=`<button class="mbtn mbtn-exit" onclick="exitGame()">종료하기</button><button class="mbtn mbtn-next" onclick="handleNext()">다음 라운드</button>`;
+    nextBtn.classList.add('visible');
+  }else{
+    success=false;
+    resMsg.textContent=`기록 단축 실패... (${fmt(lastRec)}보다 빨라야 함)`;
+    resMsg.style.color='var(--err)';resBox.classList.add('fail');
+    resBtns.innerHTML=`<button class="mbtn mbtn-exit" onclick="exitGame()">종료하기</button><button class="mbtn mbtn-retry" onclick="handleNext()">다시 시도</button>`;
+    nextBtn.classList.remove('visible');
+  }
+  resModal.classList.add('active');
+}
+function handleNext(){
+  resModal.classList.remove('active');
+  if(success){roundNum++;roundDisp.textContent=`ROUND ${roundNum}`;recDisp.textContent=`이전 기록: ${fmt(lastRec)}`;}
+  initGrid();
+}
+function exitGame(){
+  resModal.classList.remove('active');
+  repBody.innerHTML='';
+  if(!history.length){repBody.innerHTML='<tr><td colspan="2" style="color:#64748b;text-align:center;padding:16px">기록이 없습니다.</td></tr>';}
+  else{history.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td>ROUND ${r.round}</td><td style="color:var(--neon)">${fmt(r.time)}</td>`;repBody.appendChild(tr);});}
+  repModal.classList.add('active');
+}
+function resetGame(){repModal.classList.remove('active');initGrid(true);}
+
+function openHTP(){
+  htpModal.classList.add('active');
+  if(page==='game'&&timerOn)pauseAt=Date.now();
+}
+function closeHTP(){
+  htpModal.classList.remove('active');
+  if(page==='game'&&timerOn&&pauseAt){pausedMs+=Date.now()-pauseAt;pauseAt=null;}
+}
+
+window.addEventListener('keydown',e=>{
+  if(e.code!=='Space')return;
+  if(document.activeElement&&document.activeElement.tagName==='INPUT')return;
+  if(!htpModal.classList.contains('active'))e.preventDefault();
+  else return;
+  if(page==='setup'){startGame();return;}
+  if(page==='game'){
+    if(resModal.classList.contains('active')||repModal.classList.contains('active'))return;
+    if(revIdx<cellCount-1){
+      revIdx++;playClick();
+      const ov=document.getElementById('ov-'+revIdx);
+      if(ov)ov.classList.add('revealed');
+      if(revIdx===cellCount-1&&timerOn){
+        const end=Date.now();
+        let off=pausedMs;if(pauseAt)off+=end-pauseAt;
+        timerOn=false;showResult((end-startTime-off)/1000);
+      }
+    }
+  }
+});
+
+renderGroups();
+</script>
+</body>
+</html>
+.retro-road{
+  width:100%;height:120px;
+  background:#1a1a1a;
+  position:relative;overflow:hidden;
+}
+.road-line{
+  position:absolute;top:50%;left:0;right:0;
+  height:6px;
+  background:repeating-linear-gradient(90deg,#ffff00 0,#ffff00 40px,transparent 40px,transparent 80px);
+  transform:translateY(-50%);
+}
+.road-edge-top{position:absolute;top:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#fff 0,#fff 20px,#333 20px,#333 40px)}
+.road-edge-bot{position:absolute;bottom:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#fff 0,#fff 20px,#333 20px,#333 40px)}
+@keyframes roadscroll{0%{background-position:0 0}100%{background-position:-160px 0}}
+.road-anim{animation:roadscroll .5s linear infinite}
+@keyframes car-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.player-car{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:3rem;animation:car-bounce .4s ease-in-out infinite;filter:drop-shadow(0 0 8px #ff6b00)}
+@keyframes enemy1{0%{left:-10%}100%{left:110%}}
+@keyframes enemy2{0%{right:-10%}100%{right:110%}}
+.e-car1{position:absolute;top:18%;font-size:1.8rem;animation:enemy1 3s linear infinite}
+.e-car2{position:absolute;bottom:18%;font-size:1.8rem;animation:enemy2 4s linear infinite;transform:scaleX(-1)}
+
+.retro-title-area{
+  background:#000;padding:24px 32px;text-align:center;
+  border-top:3px solid #ff6b00;border-bottom:3px solid #ff6b00;
+}
+.retro-title{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(2rem,8vw,4.5rem);
+  font-weight:900;
+  color:#ff6b00;
+  text-shadow:0 0 10px #ff6b00,0 0 20px #ff4400,4px 4px 0 #7a2f00;
+  letter-spacing:6px;
+  line-height:1.1;
+}
+.retro-sub{
+  font-family:'Orbitron',monospace;
+  color:#ffff00;
+  font-size:clamp(.55rem,2vw,.85rem);
+  letter-spacing:3px;
+  margin-top:8px;
+  text-shadow:0 0 8px #ffff00;
+}
+@keyframes blink2{0%,100%{opacity:1}49%{opacity:1}50%,99%{opacity:0}}
+.retro-insert{
+  font-family:'Orbitron',monospace;
+  color:#00ff88;
+  font-size:clamp(.6rem,2vw,.95rem);
+  letter-spacing:4px;
+  margin-top:14px;
+  animation:blink2 1s infinite;
+  text-shadow:0 0 10px #00ff88;
+}
+.retro-score-row{
+  display:flex;justify-content:space-between;align-items:center;
+  background:#000;padding:10px 24px;
+  font-family:'Orbitron',monospace;
+  font-size:clamp(.6rem,1.8vw,.85rem);
+  color:#00ffff;
+  letter-spacing:2px;
+  border-bottom:2px solid #333;
+}
+.retro-score-row span{color:#ff6b00}
+.retro-btn-area{background:#000;padding:20px 32px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.retro-start-btn{
+  padding:14px 48px;
+  background:#000;
+  border:3px solid #ff6b00;
+  color:#ff6b00;
+  font-family:'Orbitron',monospace;
+  font-weight:900;
+  font-size:clamp(.9rem,3vw,1.3rem);
+  letter-spacing:4px;
+  cursor:pointer;
+  text-shadow:0 0 8px #ff6b00;
+  box-shadow:0 0 16px rgba(255,107,0,.4),inset 0 0 16px rgba(255,107,0,.05);
+  transition:all .2s;
+  border-radius:4px;
+}
+.retro-start-btn:hover{background:#ff6b00;color:#000;box-shadow:0 0 30px rgba(255,107,0,.8)}
+.retro-lights{display:flex;gap:20px;justify-content:center;margin-top:4px}
+@keyframes traffic-light {
+  0%, 33% { background: #dc2626; box-shadow: 0 0 12px #dc2626; opacity: 1; }
+  34%, 66% { background: #eab308; box-shadow: 0 0 12px #eab308; opacity: 1; }
+  67%, 100% { background: #10b981; box-shadow: 0 0 12px #10b981; opacity: 1; }
+}
+
+.traffic-anim .retro-light {
+  opacity: 0.2;
+}
+
+.traffic-anim .retro-light:nth-child(1) { animation: light1 3s infinite; }
+.traffic-anim .retro-light:nth-child(2) { animation: light2 3s infinite; }
+.traffic-anim .retro-light:nth-child(3) { animation: light3 3s infinite; }
+
+@keyframes light1 { 0%, 33% { opacity: 1; } 34%, 100% { opacity: 0.2; } }
+@keyframes light2 { 34%, 66% { opacity: 1; } 0%, 33%, 67%, 100% { opacity: 0.2; } }
+@keyframes light3 { 67%, 100% { opacity: 1; } 0%, 66% { opacity: 0.2; } }
+.retro-light{width:28px;height:28px;border-radius:50%;border:3px solid #333}
+
+/* TRACK */
+.track{position:relative;height:100px;background:#1e293b;border:4px dashed #64748b;border-radius:16px;overflow:hidden;width:100%}
+.track-line{position:absolute;top:50%;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,#fff 0,#fff 16px,transparent 16px,transparent 32px);transform:translateY(-50%);opacity:.25}
+@keyframes car1{0%{left:-15%}60%{left:110%}100%{left:110%}}
+@keyframes car2{0%{right:-15%}55%{right:110%}100%{right:110%}}
+.car1{position:absolute;top:12px;font-size:2.4rem;animation:car1 4.5s infinite linear}
+.car2{position:absolute;bottom:12px;font-size:2.4rem;animation:car2 5.2s infinite linear;transform:scaleX(-1)}
+
+.grid-table{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:10px;background:#1e293b;border:10px solid #111827;border-radius:20px;width:100%;aspect-ratio:16/9;overflow:hidden;position:relative}
+.cell{position:relative;display:flex;justify-content:center;align-items:center;color:#fff;font-weight:900;font-size:clamp(.8rem,2.8vw,2rem);text-shadow:0 2px 4px rgba(0,0,0,.5);user-select:none;white-space:nowrap;line-height:1.2}
+.overlay{position:absolute;inset:0;background:radial-gradient(circle,#2d3748 0%,#1a202c 100%);border:1px solid rgba(255,255,255,.05);z-index:5;display:flex;justify-content:center;align-items:center;transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1)}
+.overlay::after{content:'⚙️';font-size:1.4rem;opacity:.15}
+.overlay.revealed{opacity:0;pointer-events:none;transform:scale(1.15) translateY(-10px)}
+.modal-wrap{position:fixed;inset:0;background:rgba(2,6,23,.7);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-wrap.active{display:flex}
+.modal-box{background:#111827;border:3px solid var(--neon);border-radius:28px;padding:36px 48px;max-width:520px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.modal-box.fail{border-color:var(--err)}
+.modal-time{font-family:'Orbitron',sans-serif;font-size:4rem;font-weight:900;color:var(--neon);white-space:nowrap}
+.mbtn{padding:14px 28px;border-radius:14px;font-size:1.1rem;font-weight:800;cursor:pointer;border:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:8px}
+.mbtn:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.mbtn-exit{background:#334155;color:#cbd5e1;border-color:#475569}
+.mbtn-next{background:var(--neon);color:#fff;border-color:#ff8533}
+.mbtn-retry{background:var(--err);color:#fff;border-color:#f87171}
+.action-btn{position:absolute;bottom:16px;right:16px;background:var(--neon);border:2px solid #fff;color:#fff;width:48px;height:48px;border-radius:14px;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:1.4rem;z-index:20;transition:all .25s}
+.action-btn.visible{display:flex}
+.action-btn:hover{transform:scale(1.1) rotate(15deg);background:#ff8533}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.blink{animation:blink 1.6s infinite}
+.badge{padding:6px 14px;border-radius:10px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:6px;border:1px solid rgba(0,0,0,.2)}
+.group-card{border-radius:18px;padding:16px;display:flex;flex-direction:column;align-items:center;border:1px solid rgba(0,0,0,.2);transition:transform .2s}
+.group-card:hover{transform:scale(1.03)}
+.group-input{width:100%;text-align:center;padding:8px;border-radius:10px;font-weight:700;font-size:1rem;background:rgba(0,0,0,.4);color:#fff;border:1px solid rgba(255,255,255,.2);outline:none}
+.group-input:focus{box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+.btn-cnt{width:36px;height:36px;border-radius:10px;font-weight:900;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border:1px solid #475569;background:#1e293b;color:#fff;transition:all .2s}
+.btn-cnt:hover{background:var(--neon)}
+.htable{width:100%;border-collapse:collapse}
+.htable th{padding:12px;border-bottom:2px solid #334155;color:#64748b;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
+.htable td{padding:14px;border-bottom:1px solid #1e293b;font-weight:700;color:#f1f5f9;font-size:1.2rem}
+.htable tr:last-child td{border-bottom:none}
+.round-disp{font-family:'Orbitron',sans-serif;color:#fff;font-size:2.6rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 20px rgba(255,107,0,.4)}
+.rec-disp{font-size:1rem;color:var(--neon);font-weight:700;background:rgba(0,0,0,.6);border:1px solid rgba(255,107,0,.3);padding:4px 16px;border-radius:9999px;margin-top:6px}
+
+/* HOW TO PLAY 순서 번호 스타일 */
+.htp-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
+.htp-list li{display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.htp-num{min-width:26px;height:26px;border-radius:50%;background:var(--neon);color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.htp-num-red{background:var(--err)}
+</style>
+</head>
+<body>
+
+<!-- PAGE: WELCOME (레트로 레이싱 게임 인트로) -->
+<div id="pg-welcome" class="page active">
+  <div class="retro-bg">
+    <!-- 스코어 바 -->
+    <div class="retro-score-row">
+      <div>SCORE <span id="scoreDisp">000000</span></div>
+      <div>HI-SCORE <span>999999</span></div>
+      <div>STAGE <span>01</span></div>
+    </div>
+
+    <!-- 타이틀 -->
+    <div class="retro-title-area">
+      <div class="retro-title">COLOR RACE</div>
+      <div class="retro-sub">WORD SPEED SPEAKING</div>
+      <div class="retro-insert">▶▶ 단어를 빠르고 정확하게 읽어봅시다. ◀◀</div>
+    </div>
+
+    <!-- 버튼 영역 -->
+    <div class="retro-btn-area">
       <button class="retro-start-btn" onclick="goIntro()"> How to play </button>
 <button class="retro-start-btn" onclick="goSetup()" style="margin-top:16px; border-color:#3b82f6; color:#3b82f6;">모둠 설정하기</button>
     </div>
