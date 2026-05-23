@@ -8,21 +8,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <style>
         :root{--neon:#ff6b00;--asphalt:#090d16;--err:#ef4444}
-        html, body { width: 100%; min-height: 100vh; background: #090d16; display: flex; justify-content: center; align-items: center; padding: 20px; font-family: 'Pretendard', sans-serif; }
+     html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+.game-container {
+    width: 95vw;    /* 모바일에서는 화면 너비의 95% */
+    max-width: 1280px;
+    height: 85vh;   /* 화면 높이의 85% */
+    border: 4px solid #ff6b00;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-size: cover; /* 이미지가 잘리지 않게 조정 */
+    margin: 0 auto;
+}
 
-        .game-container {
-            width: 100%; max-width: 1280px; height: 90vh;
-            border: 4px solid #ff6b00; border-radius: 16px; 
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column; 
-            
-            /* 여기서 배경 설정 변경 */
-            background-image: url('car.png'); /* 기본값 */
-            background-size: 100% 100%;       /* 가로세로를 컨테이너에 완벽히 맞춤 */
-            background-position: center;      /* 중앙 정렬 */
-            background-repeat: no-repeat;
-        }
-
+@media (max-width: 768px) {
+    .round-disp { font-size: 2rem !important; }
+    .modal-time { font-size: 2.5rem !important; }
+    .menu-btn { width: 180px !important; font-size: 0.9rem !important; }
+    .grid-table { gap: 4px !important; }
+    .cell { font-size: 1.2rem !important; }
+}
         .menu-buttons {
             display: flex;
             justify-content: center; /* 가로 중앙 정렬 */
@@ -88,9 +101,11 @@
           text-align: center;
           gap: 12px;
         }
-        .modal-box.fail {
-          border-color: var(--err);                  /* 빨간색 테두리로 변경 (#ef4444) */
-        }
+.modal-box {
+    width: 90% !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+}
 
         /* 3. 팝업창 내부 소요 시간 텍스트 스타일 */
         .modal-time {
@@ -140,11 +155,11 @@
             height: 100%;
         }
 
-        .img-btn img {
-            width: 200px;           /* 원하시는 크기로 조절하세요 */
-            height: auto;
-            display: block;
-        }
+.img-btn img {
+    max-width: 100%;
+    width: 150px; /* 모바일에서 조금 더 작게 */
+    height: auto;
+}
 
         .img-btn:hover { transform: scale(1.05); /* 마우스 올렸을 때 살짝 커지는 효과 */}
         .learning-goal {
